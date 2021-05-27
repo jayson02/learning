@@ -1,20 +1,8 @@
 const http =  require('http');
 const fs = require('fs');
+const _ = require('lodash');
 
 const server = http.createServer((req, res)=> {
-	// if(req.url === '/'){
-	// 	res.setHeader('Content-type', 'text/plain');
-	// 	res.write('Home');
-	// 	res.end();
-	// } else if (req.url === '/about') {
-	// 	res.setHeader('Content-type', 'text/plain');
-	// 	res.write('About');
-	// 	res.end();
-	// } else {
-	// 	res.setHeader('Content-type', 'text/plain');
-	// 	res.write('Redirecting...');
-	// 	res.end();
-	// }
 	res.setHeader('Content-type', 'text/html');
 
 	let path = './views/';
