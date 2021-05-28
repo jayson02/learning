@@ -15,6 +15,7 @@ app.use((req, res, next) => {
 	console.log(`host : ${req.hostname}`);
 	console.log('path : ', req.path);
 	console.log('method : ', req.method);
+	//using next function to execute next code
 	next();
 });
 
