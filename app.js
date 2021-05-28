@@ -1,14 +1,28 @@
 const express =  require('express');
-const morgan = require('morgan');
+const morgan = require('morgan'); //middleware 3rd party
+const mongoose = require('mongoose');
 
 //express app
 const app = express();
+
+//Connect to mongodb cluster, change the password and database name
+const dbURI = 'mongodb+srv://jayson:12345@nodetutorial.dfbp1.mongodb.net/node-tutorial?retryWrites=true&w=majority';
+//connect dbURI to monggoose
+// adding optional paramater useNewUrlParser and
+// useUnifiedTopology set to true for removing deprecation warning in console
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+	.then((result) => {
+		app.listen(3000)
+		console.log('connected to db')
+	})
+	.catch((err) => console.log(err))
+
 
 //set the ejs view engine to express app
 app.set('view engine', 'ejs');
 
 //listen for request
-app.listen(3000);
+// app.listen(3000); //move this after connected to mongodb
 
 //capture the request using middleware MANUALLY
 // app.use((req, res, next) => {
