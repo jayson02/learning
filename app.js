@@ -9,6 +9,15 @@ app.set('view engine', 'ejs');
 //listen for request
 app.listen(3000);
 
+//capture the request using middleware
+app.use((req, res, next) => {
+	console.log('new request incoming...');
+	console.log(`host : ${req.hostname}`);
+	console.log('path : ', req.path);
+	console.log('method : ', req.method);
+	next();
+});
+
 app.get('/', (req, res) => {
 	//automatic set headers and or content-type manually with node
 	// res.send('<h1>Response from node server</h1>');
