@@ -20,6 +20,11 @@ app.listen(3000);
 // 	next();
 // });
 
+//middleware & static files
+//use this to public folder or files accessible
+//express static function
+app.use(express.static('public'));
+
 //using morgan middleware library (npm install morgan)
 app.use(morgan('dev'));
 
