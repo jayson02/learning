@@ -1,4 +1,5 @@
 const express =  require('express');
+const morgan = require('morgan');
 
 //express app
 const app = express();
@@ -9,15 +10,18 @@ app.set('view engine', 'ejs');
 //listen for request
 app.listen(3000);
 
-//capture the request using middleware
-app.use((req, res, next) => {
-	console.log('new request incoming...');
-	console.log(`host : ${req.hostname}`);
-	console.log('path : ', req.path);
-	console.log('method : ', req.method);
-	//using next function to execute next code
-	next();
-});
+//capture the request using middleware MANUALLY
+// app.use((req, res, next) => {
+// 	console.log('new request incoming...');
+// 	console.log(`host : ${req.hostname}`);
+// 	console.log('path : ', req.path);
+// 	console.log('method : ', req.method);
+// 	//using next function to execute next code
+// 	next();
+// });
+
+//using morgan middleware library (npm install morgan)
+app.use(morgan('dev'));
 
 app.get('/', (req, res) => {
 	//automatic set headers and or content-type manually with node
